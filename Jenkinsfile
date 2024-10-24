@@ -4,20 +4,21 @@ pipeline {
     when {
         branch 'feature-ci-pipeline'
     }
+
     stages {
         stage('Restore dependencies') {
             steps {
-                bat 'dotnet restore '
+                bat 'dotnet restore'
             }
         }
         stage('Build project') {
             steps {
-                echo 'dotnet build --no-restore'
+                bat 'dotnet build --no-restore'
             }
         }
         stage('Execute tests') {
             steps {
-                echo 'dotnet test --no-build --verbosity normal'
+                bat 'dotnet test --no-build --verbosity normal'
             }
         }
     }
